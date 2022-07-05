@@ -13,4 +13,4 @@ class Student(models.Model):
         ("abdi", "Abdi"),
         ("bahrami", "Bahrami")
     )
-    teacher = models.CharField(max_length=7, choices = TEACHER)
+    teacher = models.CharField(max_length=7, null=True, blank=True, choices = TEACHER)
