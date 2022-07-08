@@ -25,5 +25,7 @@ urlpatterns = [
     path('car/', include('car.urls')), #127.0.0.1:8000/car/func_name
 
     path('api-token-auth', views.obtain_auth_token),
-    path('api-auth', include('rest_framework.urls'))
+    path('api-auth', include('rest_framework.urls')),
+
+    path('user/', include('user.urls'))
 ]

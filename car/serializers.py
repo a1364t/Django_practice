@@ -6,12 +6,14 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = '__all__'
+    
 
 
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = '__all__'
+        
 
 
 class CarReadSerializer(serializers.ModelSerializer):

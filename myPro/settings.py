@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)_kj80gug^wm)++zqc+&8d+nc42mn_#0-1hf!1g1e9+)lsgp41
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'myApp' ,
     'employee',
     'car',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -75,18 +76,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myPro.wsgi.application'
 
+RENDERER = ('rest_framework.renderers.JSONRenderer',)
+if DEBUG:
+    RENDERER += ('rest_framework.renderers.BrowsableAPIRenderer', )
+
+
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication'
     ),
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',
-                                   'rest_framework.permissions.IsAuthenticated'),
+    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',
                                 'rest_framework.filters.SearchFilter',
                                 'rest_framework.filters.OrderingFilter'),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-                                'PAGE_SIZE': 2
+                                'PAGE_SIZE': 2,
+    'DEFAULT_RENDERER_CLASSES': RENDERER
 }
 
 
