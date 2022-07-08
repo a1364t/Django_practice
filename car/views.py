@@ -27,6 +27,9 @@ class PersonViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
     http_method_names = ['get', 'post', 'put', 'delete']
 
+    search_fields = ('name', )
+    ordering_fields = '__all__'
+
     def list(self, request, *args, **kwargs):
         objs = super().list(request, *args, **kwargs)
         print("----List----")
