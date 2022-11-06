@@ -8,6 +8,7 @@ class Student(models.Model):
     std_number = models.IntegerField()
 
 
+
     TEACHER = (
         ("ahmadi", "Ahmadi"),
         ("abdi", "Abdi"),
